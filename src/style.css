@@ -1,4 +1,4 @@
-App.css
+style.css
 *{
     margin: 0;
     padding: 0;
@@ -25,8 +25,7 @@ body{
     margin-top: 1%;
     width: 440px;
     height: 590px;
-    background-color:rgba(0, 0, 0, 0.7) ;
-    border-radius:10px;
+    background-color: #000;
 }
 
 .container h1{
@@ -50,7 +49,6 @@ input::placeholder{
     font-size: 17px;
     margin-left: 15px;
     padding: 12px;
-    text-align: center;
 }
 
 input[type=submit]{
@@ -61,7 +59,6 @@ input[type=submit]{
     border-radius: 3px;
     cursor: pointer;
     margin-top: 40px;
-    margin-bottom:30px;
 }
 
 input[type=checkbox]{
@@ -88,6 +85,7 @@ label{
     font-size: 9px;
     margin-left: 55px;
 }
+
 .content h2{
     color: rgb(125, 119, 119);
 }

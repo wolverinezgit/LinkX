@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
+import "../src/App.css";
 function App() {
+
+  const [link,setlink]=useState("");
+  const [generatedLink,setgeneratedLink]=useState("");
+  const [copyToClipboard,setcopyToClipboard]=useState("Copy to clipboard");
+const updateUrl = (e)=>{
+  
+  setlink(e.target.value);
+  setcopyToClipboard("Copy to clipboard");
+
+}
+const copy = () => {
+  
+  navigator.clipboard.writeText(generatedLink);
+setcopyToClipboard("Copied ✔");
+console.log("copied");
+
+};
+  const submit=()=>{
+    console.log("frontend" +link);
+axios.post("http://localhost:4000/",{link:link}).then((response)=>{console.log(response.data.newid);setgeneratedLink("http://localhost:4000/"+response.data.newid)}).catch((error)=>{console.log(error)});
+
+    
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+ 
+     <div className="container">
+         <h1>Shorten URL</h1>
+         <div className="form">
+         
+<input type="text" value={link} id="url" onChange={updateUrl} placeholder="ENTER URL" />
+<input type="submit"  onClick={submit} value="Generate"/>
+<input type="text" placeholder="" value={generatedLink} />
+<input type="submit" id="cpy"  onClick={copy} value={copyToClipboard}/>
+         </div>
+        
+     </div>
+
+</div>
+    
   );
 }
 
 export default App;
+
+
+
