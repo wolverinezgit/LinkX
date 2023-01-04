@@ -24,7 +24,7 @@ console.log("copied");
 };
   const submit=()=>{
     console.log("frontend" +link);
-axios.post("http://localhost:4000/",{link:link}).then((response)=>{console.log(response.data.newid);setgeneratedLink("http://localhost:4000/"+response.data.newid)}).catch((error)=>{console.log(error)});
+axios.post("https://linker-backend-71xv.onrender.com/",{link:link}).then((response)=>{console.log(response.data.newid);setgeneratedLink("https://linker-backend-71xv.onrender.com/"+response.data.newid)}).catch((error)=>{console.log(error)});
 
     
   }
